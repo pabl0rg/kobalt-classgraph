@@ -1,0 +1,6 @@
+<kobalt-plugin>
+    <name>kobalt-class-graph</name>
+    <plugin-actors>
+        <class-name>com.guatec.kobalt.plugin.classgraph.ClassGraphPlugin</class-name>
+    </plugin-actors>
+</kobalt-plugin>
