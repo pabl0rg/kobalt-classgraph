@@ -1,26 +1,32 @@
 import com.beust.kobalt.*
 import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.kotlin.*
+import com.beust.kobalt.plugin.java.*
 
 val repos = repos()
 
+val j = javaProject {
+    name = "classgraph-java"
 
-val p = kotlinProject {
+    dependenciesTest {
+        compile("org.testng:testng:6.9.5")
+    }
+}
 
+val k = kotlinProject (j) {
     name = "classgraph"
     group = "com.guatec.kobalt"
     artifactId = name
     version = "0.1"
+    buildDirectory = "kotlinBuild"
 
     sourceDirectories {
         path("src/main/kotlin")
         path("src/main/resources")
-        path("src/main/res")
     }
 
     sourceDirectoriesTest {
         path("src/test/resources")
-        path("src/test/res")
         path("src/test/kotlin")
     }
 
@@ -29,8 +35,7 @@ val p = kotlinProject {
     }
 
     dependenciesTest {
-//        compile("org.testng:testng:6.9.5")
-
+        compile("org.testng:testng:6.9.5")
     }
 
     assemble {
